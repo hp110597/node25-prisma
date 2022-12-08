@@ -5,7 +5,12 @@ app.use(express.static("."))
 
 app.listen(8080)
 
-app.get("/demo",(req,res)=>{
+const { PrismaClient}  =require('@prisma/client')
+const prisma = new PrismaClient()  //tuong tu const model = initial-Model()
+
+
+app.get("/demo",async(req,res)=>{
+    let data = await prisma.user.findMany()
     res.send("hello")
 })
 
