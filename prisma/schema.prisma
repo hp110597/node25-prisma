@@ -12,38 +12,39 @@ datasource db {
 
 //định nghĩa model
 
-// model User {
-//   user_id   Int    @id @default(autoincrement())
-//   full_name String
-//   email     String
-//   pass_word String
+model User {
+  user_id   Int    @id @default(autoincrement())
+  full_name String
+  email     String
+  pass_word String
 
-//   foods Food[]
-// }
+  foods Food[]
+}
 
-// model Food {
-//   food_id   Int       @id @default(autoincrement())
-//   food_name String
-//   image     String
-//   price     String
-//   desc      String
-//   type_id   Int
-//   user_id  Int
-//   food_type Food_Type @relation(fields: [type_id], references: [type_id])
-//   food_user User @relation(fields: [user_id],references: [user_id])
-// }
+model Food {
+  food_id   Int       @id @default(autoincrement())
+  food_name String
+  image     String
+  price     String
+  desc      String
+  type_id   Int
+  user_id  Int
+  food_type Food_Type @relation(fields: [type_id], references: [type_id])
+  food_user User @relation(fields: [user_id],references: [user_id])
+}
 
-// model Food_Type {
-//   type_id   Int    @id @default(autoincrement())
-//   type_name String
-//   foods     Food[]
-// }
+model Food_Type {
+  type_id   Int    @id @default(autoincrement())
+  type_name String
+  foods     Food[]
+}
 
 //CODE 1ST SAU KHI TAO DATA NHƯ BÊN TRÊN THÌ TRONG COMMAND GÕ yarn prisma db push ĐỂ TẠO DATABASE
 
 
 
-//------------------------DATABASE 1ST ----yarn prisma db pull
+//------------------------DATABASE 1ST ----
+// yarn prisma db pull
 model food {
   food_id   Int        @id @default(autoincrement())
   food_name String?    @db.VarChar(255)
@@ -128,3 +129,6 @@ model user {
   order     order[]
   rate_res  rate_res[]
 }
+
+
+//yarn prisma generate
